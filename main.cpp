@@ -22,7 +22,7 @@ TEST_CASE("Points and Lines")
 
 	SECTION("Basic Line")
 	{
-		Point point4(1.3, 3.5);
+		Point point4(3.0, 5.2);
 		Point point2(1.2, 3.4);
 		Point point3(5.6, 7.8);
 		Line line1(point2, point3);
@@ -30,12 +30,12 @@ TEST_CASE("Points and Lines")
 
 		REQUIRE(line1.GetLength() == 6.2);
 		REQUIRE(line1.GetSlope() == 1.0);
-		//REQUIRE(line1.IsOnLine(point4) == false);
+		REQUIRE(line1.IsOnLine(point4) == true);
 		REQUIRE(line1.GetMidpoint().GetxCoord() == mid.GetxCoord());
 		REQUIRE(line1.GetMidpoint().GetyCoord() == mid.GetyCoord());
 		//REQUIRE(line1.LineToString == );
 		line1.ExtendLine(2);
-		cout << "X: " << line1.GetPoint1().GetxCoord() << "Y: " << line1.GetPoint1().GetyCoord();
+		cout << "X: " << line1.GetPoint1().GetxCoord() << "Y: " << line1.GetPoint1().GetyCoord() << endl;
 		cout << "X: " << line1.GetPoint2().GetxCoord() << "Y: " << line1.GetPoint1().GetyCoord();
 		//REQUIRE(line1.LineToString == );
 	}

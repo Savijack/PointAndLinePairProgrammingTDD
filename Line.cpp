@@ -61,6 +61,11 @@ bool Line::IsOnLine(Point linePoint)
     {
         retVal = true;
     }
+    else if(linePoint.GetxCoord() == GetPoint1().GetxCoord() && linePoint.GetyCoord() == GetPoint1().GetyCoord() ||
+            linePoint.GetxCoord() == GetPoint2().GetxCoord() && linePoint.GetyCoord() == GetPoint2().GetyCoord())
+    {
+        retVal = true;
+    }
     return retVal;
 }
 void Line::SetMidpoint(Point point1, Point point2)
@@ -84,15 +89,21 @@ string Line::LineToString()
 
 void Line::ExtendLine(double extendLength)
 {
+
     double newX = ((GetPoint2().GetxCoord() - GetPoint1().GetxCoord()) / GetLength()) * extendLength;
     double newY = ((GetPoint2().GetyCoord() - GetPoint1().GetyCoord()) / GetLength()) * extendLength;
 
     double newX2 = ((GetPoint1().GetxCoord() - GetPoint2().GetxCoord()) / GetLength()) * extendLength;
     double newY2 = ((GetPoint1().GetyCoord() - GetPoint2().GetyCoord()) / GetLength()) * extendLength;
 
-    firstPoint.SetxCoord(newX);
-    firstPoint.SetyCoord(newY);
+    if(GetPoint2().GetxCoord() > GetPoint1().GetxCoord() && GetPoint2().GetyCoord() > GetPoint2().GetyCoord())
+    {
+        GetPoint1().SetxCoord(newX - GetPoint1().GetxCoord());
+        GetPoint1().SetyCoord(newY - GetPoint1().GetyCoord());
 
-    secondPoint.SetxCoord(newX2);
-    secondPoint.SetyCoord(newY2);
+        GetPoint2().SetxCoord(newX2 + GetPoint2().GetxCoord());
+        GetPoint2().SetyCoord(newY2 + GetPoint2().GetyCoord());
+    }
+
+    SetLength(GetPoint1(), GetPoint2());
 }
