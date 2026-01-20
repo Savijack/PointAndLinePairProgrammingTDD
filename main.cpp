@@ -2,10 +2,41 @@
 #define CATCH_CONFIG_NO_POSIX_SIGNALS
 #define CATCH_CONFIG_MAIN   
 #include "catch.hpp"
+#include "Point.h"
+#include "Line.h"
 using namespace std;
 
+
 //--
-TEST_CASE("Test Template")  
+TEST_CASE("Points and Lines")  
 { 
-	REQUIRE(100 == 100); 
+	SECTION("Basic Point")
+	{
+		Point point1(2.4, 1.3);
+		REQUIRE(10 == 10);
+		REQUIRE(point1.GetxCoord() == 2.4);
+		REQUIRE(point1.GetyCoord() == 1.3);
+		point1.PointsToString();
+		REQUIRE(point1.PointsToString() == "[X: 2.4, Y: 1.3]"); 
+	}
+
+	SECTION("Basic Line")
+	{
+		Point point4(3.0, 5.2);
+		Point point2(1.2, 3.4);
+		Point point3(5.6, 7.8);
+		Line line1(point2, point3);
+		Point mid(3.4, 5.6);
+
+		REQUIRE(line1.GetLength() == 6.2);
+		REQUIRE(line1.GetSlope() == 1.0);
+		REQUIRE(line1.IsOnLine(point4) == true);
+		REQUIRE(line1.GetMidpoint().GetxCoord() == mid.GetxCoord());
+		REQUIRE(line1.GetMidpoint().GetyCoord() == mid.GetyCoord());
+		//REQUIRE(line1.LineToString == );
+		line1.ExtendLine(2);
+		cout << "X: " << line1.GetPoint1().GetxCoord() << "Y: " << line1.GetPoint1().GetyCoord() << endl;
+		cout << "X: " << line1.GetPoint2().GetxCoord() << "Y: " << line1.GetPoint1().GetyCoord();
+		//REQUIRE(line1.LineToString == );
+	}
 }
