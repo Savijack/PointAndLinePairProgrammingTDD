@@ -6,6 +6,12 @@ Point::Point(double xCoord, double yCoord)
     SetyCoord(yCoord);
 }
 
+Point::Point()
+{
+    SetxCoord(0.0);
+    SetyCoord(0.0);
+}
+
 void Point::SetxCoord(double xCoord)
 {
     //change

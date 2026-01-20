@@ -34,7 +34,9 @@ TEST_CASE("Points and Lines")
 		REQUIRE(line1.GetMidpoint().GetxCoord() == mid.GetxCoord());
 		REQUIRE(line1.GetMidpoint().GetyCoord() == mid.GetyCoord());
 		//REQUIRE(line1.LineToString == );
-		//line1.ExtendLine(2);
+		line1.ExtendLine(2);
+		cout << "X: " << line1.GetPoint1().GetxCoord() << "Y: " << line1.GetPoint1().GetyCoord();
+		cout << "X: " << line1.GetPoint2().GetxCoord() << "Y: " << line1.GetPoint1().GetyCoord();
 		//REQUIRE(line1.LineToString == );
 	}
 }
