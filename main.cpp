@@ -26,13 +26,15 @@ TEST_CASE("Points and Lines")
 		Point point2(1.2, 3.4);
 		Point point3(5.6, 7.8);
 		Line line1(point2, point3);
+		Point mid(3.4, 5.6);
 
 		REQUIRE(line1.GetLength() == 6.2);
-		REQUIRE(line1.GetSlope() == 1);
-		REQUIRE(line1.IsOnLine(point4) == false);
-		REQUIRE(line1.Midpoint() == );
-		REQUIRE(line1.LineToString == );
-		line1.ExtendLine(2);
-		REQUIRE(line1.LineToString == );
+		REQUIRE(line1.GetSlope() == 1.0);
+		//REQUIRE(line1.IsOnLine(point4) == false);
+		REQUIRE(line1.GetMidpoint().GetxCoord() == mid.GetxCoord());
+		REQUIRE(line1.GetMidpoint().GetyCoord() == mid.GetyCoord());
+		//REQUIRE(line1.LineToString == );
+		//line1.ExtendLine(2);
+		//REQUIRE(line1.LineToString == );
 	}
 }

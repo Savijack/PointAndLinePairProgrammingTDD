@@ -8,6 +8,7 @@ Point::Point(double xCoord, double yCoord)
 
 void Point::SetxCoord(double xCoord)
 {
+    //change
     x = xCoord;
 }
 
